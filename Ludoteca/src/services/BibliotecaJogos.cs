@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Ludoteca.src.models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,7 +7,47 @@ using System.Threading.Tasks;
 
 namespace Ludoteca.src.services
 {
-    internal class BibliotecaJogos
+    public class BibliotecaJogos
     {
+        private List<Jogo> jogos = new List<Jogo>();
+        private List<Membro> membros = new List<Membro>();
+        private List<Emprestimo> emprestimos = new List<Emprestimo>();
+        public void CadastrarJogo(Jogo jogo)
+        {
+            if (jogo == null)
+                throw new ArgumentNullException(nameof(jogo), "O jogo não pode ser nulo.");
+            jogos.Add(jogo);
+        }
+        public void CadastrarMembro(Membro membro)
+        {
+            if (membro == null)
+                throw new ArgumentNullException(nameof(membro), "O membro não pode ser nulo.");
+            membros.Add(membro);
+        }
+        public void EmprestarJogo(Guid jogoId, Guid membroId)
+        {
+            Jogo? jogo = jogos.FirstOrDefault(j => j.Id == jogoId);
+            if (jogo == null)
+                throw new InvalidOperationException("Jogo não encontrado.");
+
+            Membro? membro = membros.FirstOrDefault(m => m.Id == membroId);
+            if (membro == null)
+                throw new InvalidOperationException("Membro não encontrado.");
+
+            Emprestimo emprestimo = new Emprestimo(jogo, membro);
+            emprestimos.Add(emprestimo);
+        }
+        public void DevolverJogo(Guid emprestimoId)
+        {
+            Emprestimo? emprestimo = emprestimos.FirstOrDefault(e => e.Id == emprestimoId);
+            if (emprestimo == null)
+                throw new InvalidOperationException("Empréstimo não encontrado.");
+            emprestimo.Devolver();
+            emprestimo.CalcularMulta();
+        }
+        public IEnumerable<Jogo> ListarJogosDisponiveis()
+        {
+            return jogos.Where(j => !j.EstaEmprestado).ToList();
+        }
     }
 }
