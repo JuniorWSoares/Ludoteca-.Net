@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.IO;
+using System.Text.Json;
 
 namespace Ludoteca.src.services
 {
@@ -48,6 +50,40 @@ namespace Ludoteca.src.services
         public IEnumerable<Jogo> ListarJogosDisponiveis()
         {
             return jogos.Where(j => !j.EstaEmprestado).ToList();
+        }
+
+        public void Salvar()
+        {
+            var dados = new
+            {
+                Jogos = jogos,
+                Membros = membros,
+                Emprestimos = emprestimos
+            };
+            string jsonString = JsonSerializer.Serialize(dados, new JsonSerializerOptions { WriteIndented = true });
+            File.WriteAllText("data/biblioteca.json", jsonString);
+        }
+
+        public void Carregar()
+        {
+            if (!File.Exists("data/biblioteca.json"))
+                return;
+
+            string jsonString = File.ReadAllText("data/biblioteca.json");
+            BibliotecaDados? dados = JsonSerializer.Deserialize<BibliotecaDados>(jsonString);
+
+            if (dados != null)
+            {
+                jogos = dados.Jogos ?? new List<Jogo>();
+                membros = dados.Membros ?? new List<Membro>();
+                emprestimos = dados.Emprestimos ?? new List<Emprestimo>();
+            }
+        }
+        private class BibliotecaDados
+        {
+            public List<Jogo> Jogos { get; set; } = new List<Jogo>();
+            public List<Membro> Membros { get; set; } = new List<Membro>();
+            public List<Emprestimo> Emprestimos { get; set; } = new List<Emprestimo>();
         }
     }
 }
