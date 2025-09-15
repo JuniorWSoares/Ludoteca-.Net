@@ -8,7 +8,7 @@ namespace Ludoteca.src.models
 {
     public class Emprestimo
     {
-        public Guid Id { get; private set; } = Guid.NewGuid();
+        public Guid Id { get; private set; }
         public Jogo Jogo { get; private set; }
         public Membro Membro { get; private set; }
         public DateTime DataEmprestimo { get; private set; }
@@ -21,6 +21,7 @@ namespace Ludoteca.src.models
             if (jogo.EstaEmprestado)
                 throw new InvalidOperationException("O jogo já está emprestado.");
 
+            Id = Guid.NewGuid();
             DataEmprestimo = DateTime.Now;
             DataDevolucao = null;
             jogo.Emprestar();

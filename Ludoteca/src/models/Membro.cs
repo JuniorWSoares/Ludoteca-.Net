@@ -8,7 +8,7 @@ namespace Ludoteca.src.models
 {
     public class Membro
     {
-        public Guid Id { get; private set; } = Guid.NewGuid();
+        public Guid Id { get; private set; }
         public string Nome { get; private set; }
         public string Matricula { get; private set; }
         public Membro(string nome, string matricula)
@@ -19,6 +19,7 @@ namespace Ludoteca.src.models
             if (string.IsNullOrWhiteSpace(matricula))
                 throw new ArgumentException("A matricula do membro não pode ser vazio ou nulo.", nameof(matricula));
 
+            Id = Guid.NewGuid();
             Nome = nome;
             Matricula = matricula;
         }

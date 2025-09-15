@@ -8,7 +8,7 @@ namespace Ludoteca.src.models
 {
     public class Jogo
     {
-        public Guid Id { get; private set; } = Guid.NewGuid();
+        public Guid Id { get; private set; }
         public string Nome { get; private set; }
         public string Categoria { get; private set; }
         public bool EstaEmprestado { get; private set; }
@@ -21,6 +21,7 @@ namespace Ludoteca.src.models
             if (string.IsNullOrWhiteSpace(categoria))
                 throw new ArgumentException("A categoria do jogo não pode ser vazio ou nulo.", nameof(categoria));
 
+            Id = Guid.NewGuid();
             Nome = nome;
             Categoria = categoria;  
             EstaEmprestado = false;
