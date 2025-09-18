@@ -55,6 +55,17 @@ namespace Ludoteca.src.services
             return jogos.Where(j => !j.EstaEmprestado).ToList();
         }
 
+        public IEnumerable<Membro> ListarMembros()
+        {
+            return membros;
+        }
+
+        public IEnumerable<Emprestimo> ListarEmprestimosAtivos()
+        {
+            return emprestimos.Where(e => e.DataDevolucao == null).ToList();
+        }
+
+        // [AV1-3] --- início da serialização
         public void Salvar()
         {
             var dados = new
