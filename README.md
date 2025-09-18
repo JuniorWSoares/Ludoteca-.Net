@@ -2,16 +2,35 @@
 
 Sistema em console para cadastro de jogos e membros, empréstimos e devoluções, com persistência em JSON.
 
+## Diagrama UML
+O arquivo da figura esta em ...
+
+## Classes
+- Jogo;
+- Membro;
+- Emprestimo;
+- BibliotecaJogos.
+
 ## Funcionalidades
-- Cadastro de jogos e membros.
-- Listagem de jogos. // [AV1-4-Listar]
-- Empréstimos e devoluções.
-- Persistência em `data/biblioteca.json`. // [AV1-3]
-- Tratamento de exceções. // [AV1-5]
+- Cadastro de jogo;
+- Cadastro de membro;
+- Listagem de jogos disponíveis;
+- Listagem de membros;
+- Listagem de emprestimos ativos;
+- Fazer empréstimo de um jogo;
+- Fazer devolução de um jogo;
+- Gerar relatório em `data/relatorio.txt`;
+- Persistência em `data/biblioteca.json`;
+- Log de erros em `data/debug.log`;
+- Tratamento de exceções.
+
+## Link do vídeo com a demonstração do sistema
+...
 
 ## Como rodar
+Na raiz do projeto, rodar:
 1. `dotnet build`
-2. `dotnet run --project src/`
+2. `dotnet run`
 
 ## Estrutura
 - `src/` — código fonte.
