@@ -11,9 +11,9 @@ namespace Ludoteca.src.services
 {
     public class BibliotecaJogos
     {
-        private List<Jogo> jogos = new List<Jogo>();
-        private List<Membro> membros = new List<Membro>();
-        private List<Emprestimo> emprestimos = new List<Emprestimo>();
+        private List<Jogo> jogos = new List<Jogo>(); //[AV1-2] encapsulamento
+        private List<Membro> membros = new List<Membro>(); //[AV1-2] encapsulamento
+        private List<Emprestimo> emprestimos = new List<Emprestimo>(); //[AV1-2] encapsulamento
         public void CadastrarJogo(Jogo jogo)
         {
             if (jogo == null)
@@ -31,6 +31,9 @@ namespace Ludoteca.src.services
             Jogo? jogo = jogos.FirstOrDefault(j => j.Id == jogoId);
             if (jogo == null)
                 throw new InvalidOperationException("Jogo não encontrado.");
+
+            if (jogo.EstaEmprestado)
+                throw new InvalidOperationException("O jogo já está emprestado.");
 
             Membro? membro = membros.FirstOrDefault(m => m.Id == membroId);
             if (membro == null)
