@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
 namespace Ludoteca.src.models
@@ -29,9 +30,8 @@ namespace Ludoteca.src.models
         public Emprestimo( Jogo jogo, Membro membro) //[AV1-2] Construtor com validações
         {
             Membro = membro ?? throw new ArgumentNullException(nameof(membro), "O membro não pode ser nulo.");
+            
             Jogo = jogo ?? throw new ArgumentNullException(nameof(jogo), "O jogo não pode ser nulo.");
-            if (jogo.EstaEmprestado)
-                throw new InvalidOperationException("O jogo já está emprestado.");
 
             Id = Guid.NewGuid();
             DataEmprestimo = DateTime.Now;
