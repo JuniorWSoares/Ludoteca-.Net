@@ -96,6 +96,25 @@ namespace Ludoteca.src.services
                 emprestimos = dados.Emprestimos ?? new List<Emprestimo>();
             }
         }
+        // [AV1-3] --- fim
+        public void GerarRelatorio()
+        {
+            int totalJogos = jogos.Count;
+            int totalMembros = membros.Count;
+            int emprestimosAtivos = emprestimos.Count(e => e.DataDevolucao == null);
+            int devolvidos = emprestimos.Count(e => e.DataDevolucao != null);
+
+            StringBuilder sb = new StringBuilder();
+            sb.AppendLine("=== RELATÓRIO DA LUDOTECA ===");
+            sb.AppendLine($"Total de jogos cadastrados: {totalJogos}");
+            sb.AppendLine($"Total de membros cadastrados: {totalMembros}");
+            sb.AppendLine($"Empréstimos ativos: {emprestimosAtivos}");
+            sb.AppendLine($"Empréstimos devolvidos: {devolvidos}");
+
+            Directory.CreateDirectory("data");
+            File.WriteAllText("data/relatorio.txt", sb.ToString());
+        }
+
         private class BibliotecaDados
         {
             public List<Jogo> Jogos { get; set; } = new List<Jogo>();
