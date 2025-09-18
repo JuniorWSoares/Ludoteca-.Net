@@ -3,7 +3,7 @@
 Sistema em console para cadastro de jogos e membros, empréstimos e devoluções, com persistência em JSON.
 
 ## Diagrama UML
-O arquivo da figura esta em ...
+`Ludoteca/diagramas/Diagrama-Ludoteca.png`
 
 ## Classes
 - Jogo;
