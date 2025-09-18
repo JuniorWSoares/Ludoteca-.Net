@@ -68,16 +68,19 @@ namespace Ludoteca.src.services
         // [AV1-3] --- início da serialização
         public void Salvar()
         {
-            var dados = new
-            {
+            BibliotecaDados dados = new BibliotecaDados{
                 Jogos = jogos,
                 Membros = membros,
                 Emprestimos = emprestimos
             };
+
             string jsonString = JsonSerializer.Serialize(dados, new JsonSerializerOptions { WriteIndented = true });
+            Directory.CreateDirectory("data");
             File.WriteAllText("data/biblioteca.json", jsonString);
         }
+        // [AV1-3] --- fim
 
+        // [AV1-3] --- início da desserialização
         public void Carregar()
         {
             if (!File.Exists("data/biblioteca.json"))
