@@ -11,33 +11,33 @@ namespace Ludoteca.src.services
 {
     public class BibliotecaJogos
     {
-        private List<Jogo> jogos = new List<Jogo>(); //[AV1-2] encapsulamento
-        private List<Membro> membros = new List<Membro>(); //[AV1-2] encapsulamento
-        private List<Emprestimo> emprestimos = new List<Emprestimo>(); //[AV1-2] encapsulamento
+        private List<Jogo> jogos = new List<Jogo>(); //[AV1-2]
+        private List<Membro> membros = new List<Membro>(); //[AV1-2] 
+        private List<Emprestimo> emprestimos = new List<Emprestimo>(); //[AV1-2] 
         public void CadastrarJogo(Jogo jogo)
         {
             if (jogo == null)
-                throw new ArgumentNullException(nameof(jogo), "O jogo não pode ser nulo.");
+                throw new ArgumentNullException(nameof(jogo), "O jogo não pode ser nulo."); //[AV1-2]
             jogos.Add(jogo);
         }
         public void CadastrarMembro(Membro membro)
         {
             if (membro == null)
-                throw new ArgumentNullException(nameof(membro), "O membro não pode ser nulo.");
+                throw new ArgumentNullException(nameof(membro), "O membro não pode ser nulo."); //[AV1-2]
             membros.Add(membro);
         }
         public void EmprestarJogo(Guid jogoId, Guid membroId)
         {
             Jogo? jogo = jogos.FirstOrDefault(j => j.Id == jogoId);
             if (jogo == null)
-                throw new InvalidOperationException("Jogo não encontrado.");
+                throw new InvalidOperationException("Jogo não encontrado."); //[AV1-2] 
 
             if (jogo.EstaEmprestado)
-                throw new InvalidOperationException("O jogo já está emprestado.");
+                throw new InvalidOperationException("O jogo já está emprestado."); //[AV1-2]
 
             Membro? membro = membros.FirstOrDefault(m => m.Id == membroId);
             if (membro == null)
-                throw new InvalidOperationException("Membro não encontrado.");
+                throw new InvalidOperationException("Membro não encontrado."); //[AV1-2]
 
             Emprestimo emprestimo = new Emprestimo(jogo, membro);
             emprestimos.Add(emprestimo);
@@ -46,7 +46,7 @@ namespace Ludoteca.src.services
         {
             Emprestimo? emprestimo = emprestimos.FirstOrDefault(e => e.Id == emprestimoId);
             if (emprestimo == null)
-                throw new InvalidOperationException("Empréstimo não encontrado.");
+                throw new InvalidOperationException("Empréstimo não encontrado."); //[AV1-2]
             emprestimo.Devolver();
             emprestimo.CalcularMulta();
         }

@@ -9,12 +9,12 @@ namespace Ludoteca.src.models
 {
     public class Emprestimo
     {
-        public Guid Id { get; private set; } //[AV1-2] encapsulamento
-        public Jogo Jogo { get; private set; } //[AV1-2] encapsulamento
-        public Membro Membro { get; private set; } //[AV1-2] encapsulamento 
-        public DateTime DataEmprestimo { get; private set; } //[AV1-2] encapsulamento 
-        public DateTime? DataDevolucao { get; private set; } //[AV1-2] encapsulamento
-        public decimal Multa { get; private set; } = 0m; //[AV1-2] encapsulamento
+        public Guid Id { get; private set; } //[AV1-2] 
+        public Jogo Jogo { get; private set; } //[AV1-2] 
+        public Membro Membro { get; private set; } //[AV1-2]
+        public DateTime DataEmprestimo { get; private set; } //[AV1-2]  
+        public DateTime? DataDevolucao { get; private set; } //[AV1-2] 
+        public decimal Multa { get; private set; } = 0m; //[AV1-2] 
 
         // Construtor utilizado pelo System.Text.Json durante a desserialização
         [JsonConstructor]
@@ -29,9 +29,9 @@ namespace Ludoteca.src.models
         }
         public Emprestimo( Jogo jogo, Membro membro) //[AV1-2] Construtor com validações
         {
-            Membro = membro ?? throw new ArgumentNullException(nameof(membro), "O membro não pode ser nulo.");
-            
-            Jogo = jogo ?? throw new ArgumentNullException(nameof(jogo), "O jogo não pode ser nulo.");
+            Membro = membro ?? throw new ArgumentNullException(nameof(membro), "O membro não pode ser nulo."); //[AV1-2]
+
+            Jogo = jogo ?? throw new ArgumentNullException(nameof(jogo), "O jogo não pode ser nulo."); //[AV1-2]
 
             Id = Guid.NewGuid();
             DataEmprestimo = DateTime.Now;
