@@ -1,24 +1,44 @@
-# Ludoteca .NET (AV1)
+# Ludoteca .NET
 
 Sistema em console para cadastro de jogos e membros, empréstimos e devoluções, com persistência em JSON.
 
+## Diagrama UML
+`Ludoteca/diagramas/Diagrama-Ludoteca.png`
+
+## Classes
+- Jogo;
+- Membro;
+- Emprestimo;
+- BibliotecaJogos.
+
 ## Funcionalidades
-- Cadastro de jogos e membros.
-- Listagem de jogos. // [AV1-4-Listar]
-- Empréstimos e devoluções.
-- Persistência em `data/biblioteca.json`. // [AV1-3]
-- Tratamento de exceções. // [AV1-5]
+- Cadastro de jogo;
+- Cadastro de membro;
+- Listagem de jogos disponíveis;
+- Listagem de membros;
+- Listagem de emprestimos ativos;
+- Fazer empréstimo de um jogo;
+- Fazer devolução de um jogo;
+- Gerar relatório em `data/relatorio.txt`;
+- Persistência em `data/biblioteca.json`;
+- Log de erros em `data/debug.log`;
+- Tratamento de exceções.
+
+## Link do vídeo com a demonstração do sistema
+...
 
 ## Como rodar
+Na raiz do projeto, rodar:
 1. `dotnet build`
-2. `dotnet run --project src/`
+2. `dotnet run`
 
 ## Estrutura
-- `src/` — código fonte.
-- `data/biblioteca.json` — armazenamento em JSON.
-- `diagramas/` — `Diagrama-Ludoteca.png`
-- `evidencias/av1/` — As 4 screenshots.
+- `Ludoteca/src/` — código fonte.
+- `Ludoteca/data/biblioteca.json` — armazenamento em JSON. *Criada em tempo de execução*
+- `Ludoteca/diagramas/` — `Diagrama-Ludoteca.png`
+- `Ludoteca/evidencias/av1/` — As 4 screenshots.
 
 ## Entrega
 - Branch `av1`, tag `v1.0`.
+- Branch `av2`, tag `v2.0`.
 - Evidências no diretório indicado.
