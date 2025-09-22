@@ -32,8 +32,6 @@ namespace Ludoteca.src.models
             Membro = membro;
             Jogo = jogo;
 
-            Jogo = jogo ?? throw new ArgumentNullException(nameof(jogo), "O jogo não pode ser nulo."); //[AV1-2]
-
             Id = Guid.NewGuid();
             DataEmprestimo = DateTime.Now;
             DataDevolucao = null;
