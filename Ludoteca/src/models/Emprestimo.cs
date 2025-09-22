@@ -29,9 +29,8 @@ namespace Ludoteca.src.models
         }
         public Emprestimo( Jogo jogo, Membro membro) //[AV1-2] Construtor com validações
         {
-            Membro = membro ?? throw new ArgumentNullException(nameof(membro), "O membro não pode ser nulo."); //[AV1-2]
-
-            Jogo = jogo ?? throw new ArgumentNullException(nameof(jogo), "O jogo não pode ser nulo."); //[AV1-2]
+            Membro = membro;
+            Jogo = jogo;
 
             Id = Guid.NewGuid();
             DataEmprestimo = DateTime.Now;
@@ -58,12 +57,12 @@ namespace Ludoteca.src.models
                 Multa = 0m;
             }
         }
-        public void Devolver()
+        public void Devolver(Jogo jogo)
         {
             if (DataDevolucao != null)
-                throw new InvalidOperationException("O jogo já foi devolvido.");
+                throw new InvalidOperationException("O jogo já foi devolvido."); // [AV1-2]
             DataDevolucao = DateTime.Now;
-            Jogo.Devolver();
+            jogo.Devolver();
         }
     }
 }

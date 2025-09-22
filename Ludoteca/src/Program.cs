@@ -188,9 +188,18 @@ void BlocoDevolverJogo() // [AV1-4-DevolverJogo]
     Console.WriteLine("\n================== DEVOLUÇÃO ===================\n");
     Console.Write("ID do empréstimo: ");
     Guid emprestimoId = Guid.Parse(Console.ReadLine()!);
-    biblioteca.DevolverJogo(emprestimoId);
+    Emprestimo emprestimo = biblioteca.DevolverJogo(emprestimoId);
     biblioteca.Salvar(); // [AV1-3] --- salvar após cada alteração
     Console.WriteLine("\nJogo devolvido!");
+    if (emprestimo.Multa > 0m)
+    {
+        Console.WriteLine($"\nMulta por atraso: R$ {emprestimo.Multa:F2}");
+        Console.WriteLine("Poderá ser pago por pix ou dinheiro.");
+    }
+    else
+    {
+        Console.WriteLine("\nNenhuma multa por atraso.");
+    }
     Console.WriteLine("\nPressione 'Enter' para continuar...");
     Console.ReadLine();
 }
