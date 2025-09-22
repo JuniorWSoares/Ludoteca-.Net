@@ -57,12 +57,12 @@ namespace Ludoteca.src.models
                 Multa = 0m;
             }
         }
-        public void Devolver()
+        public void Devolver(Jogo jogo)
         {
             if (DataDevolucao != null)
-                throw new InvalidOperationException("O jogo já foi devolvido.");
+                throw new InvalidOperationException("O jogo já foi devolvido."); // [AV1-2]
             DataDevolucao = DateTime.Now;
-            Jogo.Devolver();
+            jogo.Devolver();
         }
     }
 }
