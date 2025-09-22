@@ -29,7 +29,8 @@ namespace Ludoteca.src.models
         }
         public Emprestimo( Jogo jogo, Membro membro) //[AV1-2] Construtor com validações
         {
-            Membro = membro ?? throw new ArgumentNullException(nameof(membro), "O membro não pode ser nulo."); //[AV1-2]
+            Membro = membro;
+            Jogo = jogo;
 
             Jogo = jogo ?? throw new ArgumentNullException(nameof(jogo), "O jogo não pode ser nulo."); //[AV1-2]
 
