@@ -1,4 +1,4 @@
-# Ludoteca .NET (AV1)
+# Ludoteca .NET
 
 Sistema em console para cadastro de jogos e membros, empréstimos e devoluções, com persistência em JSON.
 
@@ -34,11 +34,12 @@ Na raiz do projeto, rodar:
 2. `dotnet run`
 
 ## Estrutura
-- `src/` — código fonte.
-- `data/biblioteca.json` — armazenamento em JSON.
-- `diagramas/` — `Diagrama-Ludoteca.png`
-- `evidencias/av1/` — As 4 screenshots.
+- `Ludoteca/src/` — código fonte.
+- `Ludoteca/data/biblioteca.json` — armazenamento em JSON. *Criada em tempo de execução*
+- `Ludoteca/diagramas/` — `Diagrama-Ludoteca.png`
+- `Ludoteca/evidencias/av1/` — As 4 screenshots.
 
 ## Entrega
 - Branch `av1`, tag `v1.0`.
+- Branch `av2`, tag `v2.0`.
 - Evidências no diretório indicado.
