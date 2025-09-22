@@ -17,10 +17,10 @@ Sistema em console para cadastro de jogos e membros, empréstimos e devoluções
 - Listagem de jogos disponíveis;
 - Listagem de membros;
 - Listagem de emprestimos ativos;
-- Fazer empréstimo de um jogo;
-- Fazer devolução de um jogo;
-- Calcular multa por dias de atraso;
-- Gerar relatório em `data/relatorio.txt`;
+- Faz empréstimo de um jogo;
+- Faz devolução de um jogo;
+- Calcula multa por dias de atraso;
+- Gera relatório em `data/relatorio.txt`;
 - Persistência em `data/biblioteca.json`;
 - Log de erros em `data/debug.log`;
 - Tratamento de exceções.
