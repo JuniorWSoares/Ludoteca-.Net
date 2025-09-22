@@ -42,13 +42,17 @@ namespace Ludoteca.src.services
             Emprestimo emprestimo = new Emprestimo(jogo, membro);
             emprestimos.Add(emprestimo);
         }
-        public void DevolverJogo(Guid emprestimoId)
+        public Emprestimo DevolverJogo(Guid emprestimoId)
         {
             Emprestimo? emprestimo = emprestimos.FirstOrDefault(e => e.Id == emprestimoId);
             if (emprestimo == null)
                 throw new InvalidOperationException("Empréstimo não encontrado."); //[AV1-2]
-            emprestimo.Devolver();
+            Jogo? jogo = jogos.FirstOrDefault(j => j.Id == emprestimo.Jogo.Id);
+            if (jogo == null)
+                throw new InvalidOperationException("Jogo não encontrado."); //[AV1-2]
+            emprestimo.Devolver(jogo);
             emprestimo.CalcularMulta();
+            return emprestimo;
         }
         public IEnumerable<Jogo> ListarJogosDisponiveis()
         {
