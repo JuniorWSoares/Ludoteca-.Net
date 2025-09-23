@@ -2,6 +2,10 @@
 
 Sistema em console para cadastro de jogos e membros, empréstimos e devoluções, com persistência em JSON.
 
+## Grupo
+José Júnior Warol Soares - 06012771
+Watilha de Lima Soares - 06012734
+
 ## Diagrama UML
 `Ludoteca/diagramas/Diagrama-Ludoteca.png`
 
@@ -26,7 +30,7 @@ Sistema em console para cadastro de jogos e membros, empréstimos e devoluções
 - Tratamento de exceções.
 
 ## Link do vídeo com a demonstração do sistema
-...
+AV1 - https://drive.google.com/file/d/1Ci1ekdoLgnSFFLBZDEULvL5uwTwY5Rm-/view?usp=sharing
 
 ## Como rodar
 Na raiz do projeto, rodar:
