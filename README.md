@@ -3,8 +3,8 @@
 Sistema em console para cadastro de jogos e membros, empréstimos e devoluções, com persistência em JSON.
 
 ## Grupo
-José Júnior Warol Soares - 06012771
-Watilha de Lima Soares - 06012734
+- José Júnior Warol Soares - 06012771
+- Watilha de Lima Soares - 06012734
 
 ## Diagrama UML
 `Ludoteca/diagramas/Diagrama-Ludoteca.png`
